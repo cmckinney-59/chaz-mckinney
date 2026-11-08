@@ -1,0 +1,240 @@
+.projects-page {
+  max-width: 56rem;
+  margin: 0 auto;
+}
+
+.projects-header {
+  margin-bottom: 1.5rem;
+}
+
+.projects-lead {
+  margin: -0.5rem 0 0;
+  max-width: 38rem;
+  color: var(--text-secondary);
+  font-size: 1.08rem;
+  line-height: 1.55;
+}
+
+.projects-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.75rem;
+}
+
+.projects-filter {
+  min-height: 38px;
+  padding: 0.4rem 0.85rem;
+  border-radius: 999px;
+  border: 1px solid var(--divider);
+  background: transparent;
+  color: var(--text-secondary);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.projects-filter:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.projects-filter.is-active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--on-accent);
+}
+
+.projects-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+.project-item {
+  display: grid;
+  gap: 1.1rem;
+  padding: 0 0 1.75rem;
+  border-bottom: 1px solid var(--divider);
+  animation: project-rise 0.5s ease both;
+}
+
+.project-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.project-preview-link {
+  display: block;
+  text-decoration: none;
+  border-radius: 4px;
+}
+
+.project-preview-image {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  object-position: top center;
+  border-radius: 4px;
+  border: 1px solid var(--divider);
+  background: var(--bg-secondary);
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.project-preview-link:hover .project-preview-image,
+.project-preview-link:focus-visible .project-preview-image {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 28px rgba(12, 22, 18, 0.14);
+}
+
+.project-preview-link:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.project-item--portrait .project-preview-image {
+  object-fit: contain;
+  object-position: center;
+  background: #0a0a0a;
+}
+
+.project-body {
+  display: grid;
+  gap: 1.1rem;
+}
+
+.project-status {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 0.45rem;
+  color: var(--pine);
+}
+
+.project-status--live {
+  color: var(--pine);
+}
+
+.project-status--in-progress {
+  color: var(--copper);
+}
+
+.project-status--personal {
+  color: var(--text-muted);
+}
+
+.project-name {
+  font-family: var(--font-display);
+  font-size: clamp(1.35rem, 3vw, 1.7rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  margin: 0 0 0.35rem;
+  color: var(--text-primary);
+}
+
+.project-name a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.project-name a:hover {
+  color: var(--accent);
+}
+
+.project-tagline {
+  margin: 0 0 0.75rem;
+  font-style: italic;
+  color: var(--text-secondary);
+}
+
+.project-description {
+  margin: 0 0 1rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+.project-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.project-stack li {
+  font-size: 0.8rem;
+  font-family: var(--font-display);
+  font-weight: 600;
+  color: var(--text-muted);
+  border-bottom: 1px solid var(--divider);
+  padding-bottom: 0.1rem;
+}
+
+.project-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  align-items: start;
+}
+
+.project-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  min-height: 42px;
+  padding: 0.55rem 1rem;
+  border-radius: 8px;
+  background: var(--accent);
+  color: var(--on-accent);
+  text-decoration: none;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.9rem;
+  border: 1px solid transparent;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.project-action:hover {
+  background: var(--accent-hover);
+}
+
+@keyframes project-rise {
+  from {
+    opacity: 0;
+    transform: translateY(0.75rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (min-width: 800px) {
+  .project-item {
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+    gap: 1.5rem;
+    align-items: start;
+  }
+
+  .project-body {
+    grid-template-columns: 1fr;
+    align-content: start;
+  }
+}
