@@ -104,7 +104,6 @@ export const PROJECTS: Project[] = [
     stack: ["Web"],
     image: dadsBooksImage,
     imageAlt: "Dad's Books app showing the Enter Book form",
-    href: "https://cmckinney-59.github.io/dads-books/",
     repo: "https://github.com/cmckinney-59/dads-books",
   },
   {
