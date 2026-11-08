@@ -1,3 +1,36 @@
+export type BookGenre =
+  | "fantasy"
+  | "fiction"
+  | "scripture"
+  | "religious"
+  | "biography"
+  | "self-help"
+  | "business"
+  | "history"
+  | "technical"
+  | "manga"
+  | "philosophy"
+  | "classics"
+  | "gaming"
+  | "other";
+
+export const GENRE_LABEL: Record<BookGenre, string> = {
+  fantasy: "Fantasy",
+  fiction: "Fiction",
+  scripture: "Scripture",
+  religious: "Religious",
+  biography: "Biography",
+  "self-help": "Self-help",
+  business: "Business",
+  history: "History",
+  technical: "Technical",
+  manga: "Manga",
+  philosophy: "Philosophy",
+  classics: "Classics",
+  gaming: "Gaming",
+  other: "Other",
+};
+
 export type Book = {
   id: string;
   title: string;
@@ -5,6 +38,7 @@ export type Book = {
   /** Open Library cover URL — swap for local assets later if needed */
   coverUrl: string;
   yearRead?: number;
+  genre: BookGenre;
   notes?: string;
 };
 
@@ -23,6 +57,7 @@ export const BOOKS: Book[] = [
     author: "Brandon Sanderson",
     coverUrl: coverFromId(14658334),
     yearRead: 2026,
+    genre: "fantasy",
   },
   {
     id: "edgedancer",
@@ -30,6 +65,7 @@ export const BOOKS: Book[] = [
     author: "Brandon Sanderson",
     coverUrl: coverFromId(14658530),
     yearRead: 2026,
+    genre: "fantasy",
   },
   {
     id: "queen-of-scots",
@@ -37,6 +73,7 @@ export const BOOKS: Book[] = [
     author: "Margaret George",
     coverUrl: coverFromId(8355282),
     yearRead: 2026,
+    genre: "fiction",
   },
   {
     id: "old-testament-stories",
@@ -44,6 +81,7 @@ export const BOOKS: Book[] = [
     author: "The Church of Jesus Christ of Latter-day Saints",
     coverUrl: coverFromId(6985988),
     yearRead: 2026,
+    genre: "scripture",
   },
   {
     id: "the-odyssey",
@@ -51,6 +89,7 @@ export const BOOKS: Book[] = [
     author: "Homer",
     coverUrl: coverFromId(9045853),
     yearRead: 2026,
+    genre: "classics",
   },
   {
     id: "learn-deseret",
@@ -59,6 +98,7 @@ export const BOOKS: Book[] = [
     // No reliable Open Library cover found yet
     coverUrl: "",
     yearRead: 2026,
+    genre: "religious",
   },
   {
     id: "deseret-first-book",
@@ -66,6 +106,7 @@ export const BOOKS: Book[] = [
     author: "University of Deseret",
     coverUrl: coverFromId(5837559),
     yearRead: 2026,
+    genre: "religious",
   },
   {
     id: "the-iliad",
@@ -73,6 +114,7 @@ export const BOOKS: Book[] = [
     author: "Homer",
     coverUrl: coverFromId(7083790),
     yearRead: 2026,
+    genre: "classics",
   },
   {
     id: "oathbringer",
@@ -80,6 +122,7 @@ export const BOOKS: Book[] = [
     author: "Brandon Sanderson",
     coverUrl: coverFromId(14658111),
     yearRead: 2026,
+    genre: "fantasy",
   },
   {
     id: "the-little-prince",
@@ -87,6 +130,7 @@ export const BOOKS: Book[] = [
     author: "Antoine de Saint-Exupéry",
     coverUrl: coverFromId(10708272),
     yearRead: 2026,
+    genre: "classics",
   },
   {
     id: "dawnshard",
@@ -94,6 +138,7 @@ export const BOOKS: Book[] = [
     author: "Brandon Sanderson",
     coverUrl: coverFromId(11385385),
     yearRead: 2026,
+    genre: "fantasy",
   },
   {
     id: "vagabond",
@@ -101,6 +146,7 @@ export const BOOKS: Book[] = [
     author: "Takehiko Inoue",
     coverUrl: coverFromId(863044),
     yearRead: 2026,
+    genre: "manga",
   },
   {
     id: "book-of-five-rings",
@@ -108,6 +154,7 @@ export const BOOKS: Book[] = [
     author: "Miyamoto Musashi",
     coverUrl: coverFromId(6621293),
     yearRead: 2026,
+    genre: "philosophy",
   },
   {
     id: "book-of-mormon-1920-a",
@@ -115,6 +162,7 @@ export const BOOKS: Book[] = [
     author: "Joseph Smith, Jr.",
     coverUrl: coverFromId(2977155),
     yearRead: 2026,
+    genre: "scripture",
   },
   {
     id: "book-of-mormon-1920-b",
@@ -122,6 +170,7 @@ export const BOOKS: Book[] = [
     author: "Joseph Smith, Jr.",
     coverUrl: coverFromId(2977155),
     yearRead: 2026,
+    genre: "scripture",
   },
   {
     id: "dichotomy-of-leadership",
@@ -129,6 +178,7 @@ export const BOOKS: Book[] = [
     author: "Jocko Willink & Leif Babin",
     coverUrl: coverFromId(10184059),
     yearRead: 2024,
+    genre: "business",
   },
   {
     id: "pauls-life-and-letters",
@@ -136,6 +186,7 @@ export const BOOKS: Book[] = [
     author: "Sidney B. Sperry",
     coverUrl: coverFromId(14921242),
     yearRead: 2024,
+    genre: "religious",
   },
   {
     id: "narnia-3-dawn-treader",
@@ -143,6 +194,7 @@ export const BOOKS: Book[] = [
     author: "C. S. Lewis",
     coverUrl: coverFromId(9184719),
     yearRead: 2024,
+    genre: "fantasy",
     notes: "Narnia 3 (publication order)",
   },
   {
@@ -151,6 +203,7 @@ export const BOOKS: Book[] = [
     author: "Paulo Coelho",
     coverUrl: coverFromIsbn("9780061122415"),
     yearRead: 2024,
+    genre: "self-help",
   },
   {
     id: "the-four-agreements",
@@ -158,6 +211,7 @@ export const BOOKS: Book[] = [
     author: "Don Miguel Ruiz",
     coverUrl: coverFromId(924521),
     yearRead: 2024,
+    genre: "self-help",
   },
   {
     id: "total-money-makeover",
@@ -165,6 +219,7 @@ export const BOOKS: Book[] = [
     author: "Dave Ramsey",
     coverUrl: coverFromId(7282912),
     yearRead: 2024,
+    genre: "business",
   },
   {
     id: "rich-dad-poor-dad",
@@ -172,6 +227,7 @@ export const BOOKS: Book[] = [
     author: "Robert T. Kiyosaki",
     coverUrl: coverFromId(8315603),
     yearRead: 2024,
+    genre: "business",
   },
   {
     id: "mentally-ill-mentor",
@@ -179,6 +235,7 @@ export const BOOKS: Book[] = [
     author: "David Grant Miller",
     coverUrl: coverFromId(1769510),
     yearRead: 2024,
+    genre: "other",
   },
   {
     id: "dune-messiah",
@@ -186,6 +243,7 @@ export const BOOKS: Book[] = [
     author: "Frank Herbert",
     coverUrl: coverFromId(980253),
     yearRead: 2024,
+    genre: "fantasy",
   },
   {
     id: "horse-and-his-boy",
@@ -193,6 +251,7 @@ export const BOOKS: Book[] = [
     author: "C. S. Lewis",
     coverUrl: coverFromId(9184792),
     yearRead: 2024,
+    genre: "fantasy",
   },
   {
     id: "introduction-to-baybayin",
@@ -200,6 +259,7 @@ export const BOOKS: Book[] = [
     author: "Christian Cabuay",
     coverUrl: "",
     yearRead: 2024,
+    genre: "religious",
   },
   {
     id: "clean-hands-pure-heart",
@@ -207,6 +267,7 @@ export const BOOKS: Book[] = [
     author: "Philip A. Harrison",
     coverUrl: coverFromId(14451724),
     yearRead: 2024,
+    genre: "religious",
   },
   {
     id: "magicians-nephew",
@@ -214,6 +275,7 @@ export const BOOKS: Book[] = [
     author: "C. S. Lewis",
     coverUrl: coverFromId(1072931),
     yearRead: 2024,
+    genre: "fantasy",
   },
   {
     id: "lethbridge-history-in-pictures",
@@ -221,6 +283,7 @@ export const BOOKS: Book[] = [
     author: "Belinda Crowson, Bobbie Fox, Lorien Johansen & George Kuhl",
     coverUrl: "",
     yearRead: 2024,
+    genre: "history",
   },
   {
     id: "the-last-battle",
@@ -228,6 +291,7 @@ export const BOOKS: Book[] = [
     author: "C. S. Lewis",
     coverUrl: coverFromId(6529226),
     yearRead: 2024,
+    genre: "fantasy",
   },
   {
     id: "the-mormon-story",
@@ -235,6 +299,7 @@ export const BOOKS: Book[] = [
     author: "Rulon S. Howells",
     coverUrl: coverFromId(6919848),
     yearRead: 2024,
+    genre: "religious",
   },
   {
     id: "children-of-dune",
@@ -242,6 +307,7 @@ export const BOOKS: Book[] = [
     author: "Frank Herbert",
     coverUrl: coverFromId(6976407),
     yearRead: 2024,
+    genre: "fantasy",
   },
   {
     id: "gifts-of-imperfection",
@@ -249,6 +315,7 @@ export const BOOKS: Book[] = [
     author: "Brené Brown",
     coverUrl: coverFromId(7237826),
     yearRead: 2024,
+    genre: "self-help",
   },
   {
     id: "book-of-mormon",
@@ -256,6 +323,7 @@ export const BOOKS: Book[] = [
     author: "Joseph Smith, Jr.",
     coverUrl: coverFromId(733401),
     yearRead: 2024,
+    genre: "scripture",
   },
   {
     id: "god-emperor-of-dune",
@@ -263,6 +331,7 @@ export const BOOKS: Book[] = [
     author: "Frank Herbert",
     coverUrl: coverFromId(6711531),
     yearRead: 2024,
+    genre: "fantasy",
   },
   {
     id: "visions-of-glory",
@@ -270,6 +339,7 @@ export const BOOKS: Book[] = [
     author: "John Pontius",
     coverUrl: "",
     yearRead: 2024,
+    genre: "religious",
   },
   {
     id: "the-art-of-war",
@@ -277,6 +347,7 @@ export const BOOKS: Book[] = [
     author: "Sun Tzu",
     coverUrl: coverFromId(4849549),
     yearRead: 2024,
+    genre: "philosophy",
   },
   {
     id: "his-holy-name",
@@ -284,6 +355,7 @@ export const BOOKS: Book[] = [
     author: "Dallin H. Oaks",
     coverUrl: coverFromId(13830546),
     yearRead: 2024,
+    genre: "religious",
   },
   {
     id: "women-and-the-priesthood",
@@ -291,6 +363,7 @@ export const BOOKS: Book[] = [
     author: "Sheri Dew",
     coverUrl: coverFromId(8941602),
     yearRead: 2024,
+    genre: "religious",
   },
   {
     id: "the-old-testament",
@@ -298,6 +371,7 @@ export const BOOKS: Book[] = [
     author: "Various",
     coverUrl: coverFromId(12707846),
     yearRead: 2025,
+    genre: "scripture",
   },
   {
     id: "within-reach",
@@ -305,6 +379,7 @@ export const BOOKS: Book[] = [
     author: "Robert L. Millet",
     coverUrl: coverFromId(3912897),
     yearRead: 2025,
+    genre: "religious",
   },
   {
     id: "think-like-a-programmer",
@@ -312,6 +387,7 @@ export const BOOKS: Book[] = [
     author: "V. Anton Spraul",
     coverUrl: coverFromId(8727776),
     yearRead: 2025,
+    genre: "technical",
   },
   {
     id: "anatomy-of-peace",
@@ -319,6 +395,7 @@ export const BOOKS: Book[] = [
     author: "The Arbinger Institute",
     coverUrl: coverFromId(831373),
     yearRead: 2025,
+    genre: "self-help",
   },
   {
     id: "superabundance",
@@ -326,6 +403,7 @@ export const BOOKS: Book[] = [
     author: "Marian L. Tupy & Gale L. Pooley",
     coverUrl: coverFromId(13161899),
     yearRead: 2025,
+    genre: "business",
   },
   {
     id: "mythical-man-month",
@@ -333,6 +411,7 @@ export const BOOKS: Book[] = [
     author: "Frederick P. Brooks Jr.",
     coverUrl: coverFromId(6915361),
     yearRead: 2025,
+    genre: "technical",
   },
   {
     id: "outliers",
@@ -340,6 +419,7 @@ export const BOOKS: Book[] = [
     author: "Malcolm Gladwell",
     coverUrl: coverFromId(10021591),
     yearRead: 2025,
+    genre: "self-help",
   },
   {
     id: "covenant-of-christ",
@@ -347,6 +427,7 @@ export const BOOKS: Book[] = [
     author: "Restoration Edition",
     coverUrl: "",
     yearRead: 2025,
+    genre: "scripture",
   },
   {
     id: "apocrypha",
@@ -354,6 +435,7 @@ export const BOOKS: Book[] = [
     author: "Various",
     coverUrl: coverFromId(11589799),
     yearRead: 2025,
+    genre: "scripture",
   },
   {
     id: "manga-melech",
@@ -361,6 +443,7 @@ export const BOOKS: Book[] = [
     author: "NEXT / Tyndale",
     coverUrl: coverFromId(7758027),
     yearRead: 2025,
+    genre: "manga",
   },
   {
     id: "key-to-the-keystone",
@@ -368,6 +451,7 @@ export const BOOKS: Book[] = [
     author: "Jonah R. Barnes",
     coverUrl: "",
     yearRead: 2025,
+    genre: "religious",
   },
   {
     id: "apocryphal-jesus",
@@ -375,6 +459,7 @@ export const BOOKS: Book[] = [
     author: "J. K. Elliott",
     coverUrl: coverFromId(4605421),
     yearRead: 2025,
+    genre: "scripture",
   },
   {
     id: "nelta-hamilton-autobiography",
@@ -382,6 +467,7 @@ export const BOOKS: Book[] = [
     author: "Nelta Hamilton",
     coverUrl: "",
     yearRead: 2025,
+    genre: "biography",
   },
   {
     id: "easy-way-to-stop-smoking",
@@ -389,6 +475,7 @@ export const BOOKS: Book[] = [
     author: "Allen Carr",
     coverUrl: coverFromId(6714082),
     yearRead: 2025,
+    genre: "self-help",
   },
   {
     id: "amazing-disgrace",
@@ -396,6 +483,7 @@ export const BOOKS: Book[] = [
     author: "Grace Campbell",
     coverUrl: coverFromId(12424441),
     yearRead: 2025,
+    genre: "biography",
   },
   {
     id: "whole-in-christ",
@@ -403,6 +491,7 @@ export const BOOKS: Book[] = [
     author: "Robert L. Millet",
     coverUrl: coverFromId(14075178),
     yearRead: 2025,
+    genre: "religious",
   },
   {
     id: "warbreaker",
@@ -410,6 +499,7 @@ export const BOOKS: Book[] = [
     author: "Brandon Sanderson",
     coverUrl: coverFromId(14658347),
     yearRead: 2025,
+    genre: "fantasy",
   },
   {
     id: "way-of-kings",
@@ -417,6 +507,7 @@ export const BOOKS: Book[] = [
     author: "Brandon Sanderson",
     coverUrl: coverFromId(14658316),
     yearRead: 2025,
+    genre: "fantasy",
   },
   {
     id: "saints-4",
@@ -424,6 +515,7 @@ export const BOOKS: Book[] = [
     author: "The Church of Jesus Christ of Latter-day Saints",
     coverUrl: "",
     yearRead: 2025,
+    genre: "scripture",
   },
   {
     id: "hamlet",
@@ -431,6 +523,7 @@ export const BOOKS: Book[] = [
     author: "William Shakespeare",
     coverUrl: coverFromId(8281954),
     yearRead: 2025,
+    genre: "classics",
   },
   {
     id: "stealing-home",
@@ -438,6 +531,7 @@ export const BOOKS: Book[] = [
     author: "Eric Nusbaum",
     coverUrl: coverFromId(11162413),
     yearRead: 2025,
+    genre: "biography",
   },
   {
     id: "return-of-the-king",
@@ -445,6 +539,7 @@ export const BOOKS: Book[] = [
     author: "J. R. R. Tolkien",
     coverUrl: coverFromId(14627062),
     yearRead: 2023,
+    genre: "fantasy",
   },
   {
     id: "mans-search-for-meaning",
@@ -452,6 +547,7 @@ export const BOOKS: Book[] = [
     author: "Viktor E. Frankl",
     coverUrl: coverFromId(8516506),
     yearRead: 2023,
+    genre: "philosophy",
   },
   {
     id: "shoe-dog",
@@ -459,6 +555,7 @@ export const BOOKS: Book[] = [
     author: "Phil Knight",
     coverUrl: coverFromId(8858487),
     yearRead: 2023,
+    genre: "biography",
   },
   {
     id: "designing-the-mind",
@@ -466,6 +563,7 @@ export const BOOKS: Book[] = [
     author: "Ryan A. Bush",
     coverUrl: coverFromId(14858445),
     yearRead: 2023,
+    genre: "technical",
   },
   {
     id: "manual-2-2023",
@@ -473,6 +571,7 @@ export const BOOKS: Book[] = [
     author: "Unknown",
     coverUrl: "",
     yearRead: 2023,
+    genre: "technical",
   },
   {
     id: "missing-readme",
@@ -480,6 +579,7 @@ export const BOOKS: Book[] = [
     author: "Chris Riccomini & Dmitriy Ryaboy",
     coverUrl: coverFromId(11131926),
     yearRead: 2023,
+    genre: "technical",
   },
   {
     id: "think-and-grow-rich",
@@ -487,6 +587,7 @@ export const BOOKS: Book[] = [
     author: "Napoleon Hill",
     coverUrl: coverFromId(14542536),
     yearRead: 2023,
+    genre: "self-help",
   },
   {
     id: "saints-3",
@@ -494,6 +595,7 @@ export const BOOKS: Book[] = [
     author: "The Church of Jesus Christ of Latter-day Saints",
     coverUrl: "",
     yearRead: 2023,
+    genre: "scripture",
   },
   {
     id: "hp-sorcerers-stone",
@@ -501,6 +603,7 @@ export const BOOKS: Book[] = [
     author: "J. K. Rowling",
     coverUrl: coverFromId(15155833),
     yearRead: 2023,
+    genre: "fantasy",
   },
   {
     id: "manual-companion-2023",
@@ -508,6 +611,7 @@ export const BOOKS: Book[] = [
     author: "Unknown",
     coverUrl: "",
     yearRead: 2023,
+    genre: "technical",
   },
   {
     id: "meditations",
@@ -515,6 +619,7 @@ export const BOOKS: Book[] = [
     author: "Marcus Aurelius",
     coverUrl: coverFromId(13202688),
     yearRead: 2023,
+    genre: "philosophy",
   },
   {
     id: "closeted",
@@ -522,6 +627,7 @@ export const BOOKS: Book[] = [
     author: "Unknown",
     coverUrl: "",
     yearRead: 2023,
+    genre: "other",
   },
   {
     id: "way-of-the-samurai",
@@ -529,6 +635,7 @@ export const BOOKS: Book[] = [
     author: "Yamamoto Tsunetomo",
     coverUrl: coverFromId(874678),
     yearRead: 2023,
+    genre: "philosophy",
   },
   {
     id: "hp-chamber-of-secrets",
@@ -536,6 +643,7 @@ export const BOOKS: Book[] = [
     author: "J. K. Rowling",
     coverUrl: coverFromId(15158664),
     yearRead: 2023,
+    genre: "fantasy",
   },
   {
     id: "psychwars",
@@ -543,6 +651,7 @@ export const BOOKS: Book[] = [
     author: "Unknown",
     coverUrl: "",
     yearRead: 2023,
+    genre: "other",
   },
   {
     id: "marxism-graphic-guide",
@@ -550,6 +659,7 @@ export const BOOKS: Book[] = [
     author: "Rupert Woodfin",
     coverUrl: coverFromId(7529208),
     yearRead: 2023,
+    genre: "other",
   },
   {
     id: "vancouver-asahi",
@@ -557,6 +667,7 @@ export const BOOKS: Book[] = [
     author: "Ron Hotchkiss",
     coverUrl: coverFromId(7603961),
     yearRead: 2023,
+    genre: "history",
   },
   {
     id: "lion-witch-wardrobe",
@@ -564,6 +675,7 @@ export const BOOKS: Book[] = [
     author: "C. S. Lewis",
     coverUrl: coverFromId(8441376),
     yearRead: 2023,
+    genre: "fantasy",
   },
   {
     id: "wealthy-barber",
@@ -571,6 +683,7 @@ export const BOOKS: Book[] = [
     author: "David Chilton",
     coverUrl: coverFromId(4056047),
     yearRead: 2023,
+    genre: "business",
   },
   {
     id: "prince-caspian",
@@ -578,6 +691,7 @@ export const BOOKS: Book[] = [
     author: "C. S. Lewis",
     coverUrl: coverFromId(45897),
     yearRead: 2023,
+    genre: "fantasy",
   },
   {
     id: "book-of-mormon-2023",
@@ -585,6 +699,7 @@ export const BOOKS: Book[] = [
     author: "Joseph Smith, Jr.",
     coverUrl: coverFromId(733401),
     yearRead: 2023,
+    genre: "scripture",
   },
   {
     id: "come-follow-me-2023",
@@ -592,6 +707,7 @@ export const BOOKS: Book[] = [
     author: "The Church of Jesus Christ of Latter-day Saints",
     coverUrl: "",
     yearRead: 2023,
+    genre: "scripture",
   },
   {
     id: "new-testament-lds-translation",
@@ -599,6 +715,7 @@ export const BOOKS: Book[] = [
     author: "Thomas A. Wayment",
     coverUrl: "",
     yearRead: 2023,
+    genre: "scripture",
   },
   {
     id: "animal-farm",
@@ -606,6 +723,7 @@ export const BOOKS: Book[] = [
     author: "George Orwell",
     coverUrl: coverFromId(11261770),
     yearRead: 2021,
+    genre: "classics",
   },
   {
     id: "gc-oct-2020",
@@ -613,6 +731,7 @@ export const BOOKS: Book[] = [
     author: "The Church of Jesus Christ of Latter-day Saints",
     coverUrl: "",
     yearRead: 2021,
+    genre: "scripture",
   },
   {
     id: "discipline-equals-freedom",
@@ -620,6 +739,7 @@ export const BOOKS: Book[] = [
     author: "Jocko Willink",
     coverUrl: coverFromId(10464684),
     yearRead: 2021,
+    genre: "self-help",
   },
   {
     id: "from-eden-to-armageddon",
@@ -627,6 +747,7 @@ export const BOOKS: Book[] = [
     author: "Denny L. Brown",
     coverUrl: coverFromId(4844391),
     yearRead: 2021,
+    genre: "religious",
   },
   {
     id: "guns-germs-and-steel",
@@ -634,6 +755,7 @@ export const BOOKS: Book[] = [
     author: "Jared Diamond",
     coverUrl: coverFromId(7884018),
     yearRead: 2021,
+    genre: "history",
   },
   {
     id: "insights-from-a-prophets-life",
@@ -641,6 +763,7 @@ export const BOOKS: Book[] = [
     author: "Sheri Dew",
     coverUrl: "",
     yearRead: 2021,
+    genre: "biography",
   },
   {
     id: "zelda-creating-a-champion",
@@ -648,6 +771,7 @@ export const BOOKS: Book[] = [
     author: "Nintendo",
     coverUrl: coverFromId(8829585),
     yearRead: 2021,
+    genre: "gaming",
   },
   {
     id: "zelda-encyclopedia",
@@ -655,6 +779,7 @@ export const BOOKS: Book[] = [
     author: "Nintendo",
     coverUrl: "",
     yearRead: 2021,
+    genre: "gaming",
   },
   {
     id: "mommy-book",
@@ -662,6 +787,7 @@ export const BOOKS: Book[] = [
     author: "Unknown",
     coverUrl: "",
     yearRead: 2021,
+    genre: "other",
   },
   {
     id: "lincoln-hypothesis",
@@ -669,6 +795,7 @@ export const BOOKS: Book[] = [
     author: "Timothy Ballard",
     coverUrl: coverFromId(10486193),
     yearRead: 2021,
+    genre: "religious",
   },
   {
     id: "the-revolution",
@@ -676,6 +803,7 @@ export const BOOKS: Book[] = [
     author: "Ron Paul",
     coverUrl: coverFromId(6624505),
     yearRead: 2021,
+    genre: "business",
   },
   {
     id: "who-moved-my-cheese",
@@ -683,6 +811,7 @@ export const BOOKS: Book[] = [
     author: "Spencer Johnson",
     coverUrl: coverFromId(258839),
     yearRead: 2021,
+    genre: "self-help",
   },
   {
     id: "scf",
@@ -690,6 +819,7 @@ export const BOOKS: Book[] = [
     author: "Unknown",
     coverUrl: "",
     yearRead: 2021,
+    genre: "other",
   },
   {
     id: "beyond-order",
@@ -697,6 +827,7 @@ export const BOOKS: Book[] = [
     author: "Jordan B. Peterson",
     coverUrl: coverFromId(10517194),
     yearRead: 2021,
+    genre: "self-help",
   },
   {
     id: "greenlights",
@@ -704,6 +835,7 @@ export const BOOKS: Book[] = [
     author: "Matthew McConaughey",
     coverUrl: coverFromId(10512439),
     yearRead: 2021,
+    genre: "biography",
   },
   {
     id: "hymn-book-1947",
@@ -711,6 +843,7 @@ export const BOOKS: Book[] = [
     author: "The Church of Jesus Christ of Latter-day Saints",
     coverUrl: "",
     yearRead: 2021,
+    genre: "scripture",
   },
   {
     id: "book-of-mormon-2021",
@@ -718,6 +851,7 @@ export const BOOKS: Book[] = [
     author: "Joseph Smith, Jr.",
     coverUrl: coverFromId(733401),
     yearRead: 2021,
+    genre: "scripture",
   },
   {
     id: "gc-april-2021",
@@ -725,6 +859,7 @@ export const BOOKS: Book[] = [
     author: "The Church of Jesus Christ of Latter-day Saints",
     coverUrl: "",
     yearRead: 2021,
+    genre: "scripture",
   },
   {
     id: "sapiens-2021",
@@ -732,6 +867,7 @@ export const BOOKS: Book[] = [
     author: "Yuval Noah Harari",
     coverUrl: coverFromId(8634250),
     yearRead: 2021,
+    genre: "history",
   },
   {
     id: "priesthood-power-of-women",
@@ -739,6 +875,7 @@ export const BOOKS: Book[] = [
     author: "Barbara Morgan Gardner",
     coverUrl: coverFromId(10839778),
     yearRead: 2021,
+    genre: "religious",
   },
   {
     id: "seven-twelve",
@@ -746,6 +883,7 @@ export const BOOKS: Book[] = [
     author: "Craig L. Israelsen",
     coverUrl: "",
     yearRead: 2021,
+    genre: "business",
   },
   {
     id: "in-the-hands-of-the-lord",
@@ -753,6 +891,7 @@ export const BOOKS: Book[] = [
     author: "Richard E. Turley Jr.",
     coverUrl: "",
     yearRead: 2021,
+    genre: "biography",
   },
   {
     id: "experlogix-hr-handbook",
@@ -760,6 +899,7 @@ export const BOOKS: Book[] = [
     author: "Experlogix",
     coverUrl: "",
     yearRead: 2021,
+    genre: "technical",
   },
   {
     id: "from-beirut-to-jerusalem",
@@ -767,6 +907,7 @@ export const BOOKS: Book[] = [
     author: "Thomas L. Friedman",
     coverUrl: coverFromId(222972),
     yearRead: 2021,
+    genre: "history",
   },
   {
     id: "ask-iwata",
@@ -774,6 +915,7 @@ export const BOOKS: Book[] = [
     author: "Satoru Iwata",
     coverUrl: coverFromId(10332879),
     yearRead: 2021,
+    genre: "biography",
   },
   {
     id: "making-of-a-prophet",
@@ -781,6 +923,7 @@ export const BOOKS: Book[] = [
     author: "Dan Vogel",
     coverUrl: coverFromId(791065),
     yearRead: 2021,
+    genre: "biography",
   },
   {
     id: "seven-habits-2021",
@@ -788,6 +931,7 @@ export const BOOKS: Book[] = [
     author: "Stephen R. Covey",
     coverUrl: coverFromId(10079937),
     yearRead: 2021,
+    genre: "business",
   },
   {
     id: "rough-stone-rolling",
@@ -795,6 +939,7 @@ export const BOOKS: Book[] = [
     author: "Richard Lyman Bushman",
     coverUrl: coverFromId(746906),
     yearRead: 2021,
+    genre: "biography",
   },
   {
     id: "believing-christ",
@@ -802,6 +947,7 @@ export const BOOKS: Book[] = [
     author: "Stephen E. Robinson",
     coverUrl: coverFromId(816143),
     yearRead: 2021,
+    genre: "religious",
   },
   {
     id: "message-of-the-dnc",
@@ -809,6 +955,7 @@ export const BOOKS: Book[] = [
     author: "John A. Widtsoe",
     coverUrl: "",
     yearRead: 2021,
+    genre: "scripture",
   },
   {
     id: "start-with-why",
@@ -816,6 +963,7 @@ export const BOOKS: Book[] = [
     author: "Simon Sinek",
     coverUrl: coverFromId(6395237),
     yearRead: 2021,
+    genre: "self-help",
   },
   {
     id: "the-hobbit",
@@ -823,6 +971,7 @@ export const BOOKS: Book[] = [
     author: "J. R. R. Tolkien",
     coverUrl: coverFromId(14627509),
     yearRead: 2021,
+    genre: "fantasy",
   },
   {
     id: "atomic-habits-2021",
@@ -830,6 +979,7 @@ export const BOOKS: Book[] = [
     author: "James Clear",
     coverUrl: coverFromId(12539702),
     yearRead: 2021,
+    genre: "self-help",
   },
   {
     id: "doctrine-and-covenants-2021",
@@ -837,6 +987,7 @@ export const BOOKS: Book[] = [
     author: "Joseph Smith, Jr.",
     coverUrl: "",
     yearRead: 2021,
+    genre: "scripture",
   },
   {
     id: "come-follow-me-2021",
@@ -844,6 +995,7 @@ export const BOOKS: Book[] = [
     author: "The Church of Jesus Christ of Latter-day Saints",
     coverUrl: "",
     yearRead: 2021,
+    genre: "scripture",
   },
   {
     id: "making-sense-of-the-dnc",
@@ -851,6 +1003,7 @@ export const BOOKS: Book[] = [
     author: "Steven C. Harper",
     coverUrl: coverFromId(12711903),
     yearRead: 2021,
+    genre: "scripture",
   },
   {
     id: "revelations-in-context",
@@ -858,6 +1011,7 @@ export const BOOKS: Book[] = [
     author: "The Church of Jesus Christ of Latter-day Saints",
     coverUrl: "",
     yearRead: 2021,
+    genre: "religious",
   },
   {
     id: "manual-2021",
@@ -865,6 +1019,7 @@ export const BOOKS: Book[] = [
     author: "Unknown",
     coverUrl: "",
     yearRead: 2021,
+    genre: "technical",
   },
   {
     id: "how-to-win-friends",
@@ -872,6 +1027,7 @@ export const BOOKS: Book[] = [
     author: "Dale Carnegie",
     coverUrl: coverFromId(13314878),
     yearRead: 2021,
+    genre: "self-help",
   },
   {
     id: "stuff-every-husband",
@@ -879,6 +1035,7 @@ export const BOOKS: Book[] = [
     author: "Eric San Juan",
     coverUrl: coverFromId(7595207),
     yearRead: 2021,
+    genre: "self-help",
   },
   {
     id: "great-divorce",
@@ -886,6 +1043,7 @@ export const BOOKS: Book[] = [
     author: "C. S. Lewis",
     coverUrl: coverFromId(6984074),
     yearRead: 2021,
+    genre: "philosophy",
   },
   {
     id: "walden",
@@ -893,6 +1051,7 @@ export const BOOKS: Book[] = [
     author: "Henry David Thoreau",
     coverUrl: coverFromId(11248037),
     yearRead: 2020,
+    genre: "classics",
   },
   {
     id: "the-lost-world",
@@ -900,6 +1059,7 @@ export const BOOKS: Book[] = [
     author: "Arthur Conan Doyle",
     coverUrl: coverFromId(8231444),
     yearRead: 2020,
+    genre: "classics",
   },
   {
     id: "nineteen-eighty-four",
@@ -907,6 +1067,7 @@ export const BOOKS: Book[] = [
     author: "George Orwell",
     coverUrl: coverFromId(9267242),
     yearRead: 2020,
+    genre: "classics",
   },
   {
     id: "cant-hurt-me",
@@ -914,6 +1075,7 @@ export const BOOKS: Book[] = [
     author: "David Goggins",
     coverUrl: "",
     yearRead: 2020,
+    genre: "self-help",
   },
   {
     id: "saints-1",
@@ -921,6 +1083,7 @@ export const BOOKS: Book[] = [
     author: "The Church of Jesus Christ of Latter-day Saints",
     coverUrl: coverFromId(8820607),
     yearRead: 2020,
+    genre: "scripture",
   },
   {
     id: "aklat-ni-mormon",
@@ -928,6 +1091,7 @@ export const BOOKS: Book[] = [
     author: "Joseph Smith, Jr.",
     coverUrl: "",
     yearRead: 2020,
+    genre: "scripture",
   },
   {
     id: "saints-2",
@@ -935,6 +1099,7 @@ export const BOOKS: Book[] = [
     author: "The Church of Jesus Christ of Latter-day Saints",
     coverUrl: "",
     yearRead: 2020,
+    genre: "scripture",
   },
   {
     id: "conference-2020",
@@ -942,6 +1107,7 @@ export const BOOKS: Book[] = [
     author: "The Church of Jesus Christ of Latter-day Saints",
     coverUrl: "",
     yearRead: 2020,
+    genre: "scripture",
   },
   {
     id: "the-power-of-prayer",
@@ -949,6 +1115,7 @@ export const BOOKS: Book[] = [
     author: "Unknown",
     coverUrl: "",
     yearRead: 2020,
+    genre: "religious",
   },
   {
     id: "book-of-commandments",
@@ -956,6 +1123,7 @@ export const BOOKS: Book[] = [
     author: "Joseph Smith, Jr.",
     coverUrl: "",
     yearRead: 2020,
+    genre: "scripture",
   },
   {
     id: "finding-hope",
@@ -963,6 +1131,7 @@ export const BOOKS: Book[] = [
     author: "Unknown",
     coverUrl: "",
     yearRead: 2020,
+    genre: "religious",
   },
   {
     id: "freakonomics",
@@ -970,6 +1139,7 @@ export const BOOKS: Book[] = [
     author: "Steven D. Levitt & Stephen J. Dubner",
     coverUrl: coverFromId(11172914),
     yearRead: 2020,
+    genre: "business",
   },
   {
     id: "porter-rockwell-biography",
@@ -977,6 +1147,7 @@ export const BOOKS: Book[] = [
     author: "Richard Lloyd Dewey",
     coverUrl: "",
     yearRead: 2020,
+    genre: "biography",
   },
   {
     id: "the-constitution",
@@ -984,6 +1155,7 @@ export const BOOKS: Book[] = [
     author: "Founding Fathers",
     coverUrl: "",
     yearRead: 2020,
+    genre: "history",
   },
   {
     id: "learn-csharp-2020",
@@ -991,6 +1163,7 @@ export const BOOKS: Book[] = [
     author: "Jamie Chan",
     coverUrl: "",
     yearRead: 2020,
+    genre: "technical",
   },
   {
     id: "hyrule-historia",
@@ -998,6 +1171,7 @@ export const BOOKS: Book[] = [
     author: "Nintendo",
     coverUrl: coverFromId(14856629),
     yearRead: 2020,
+    genre: "gaming",
   },
   {
     id: "arts-and-artifacts",
@@ -1005,6 +1179,7 @@ export const BOOKS: Book[] = [
     author: "Nintendo",
     coverUrl: "",
     yearRead: 2020,
+    genre: "gaming",
     notes: "The Legend of Zelda: Art & Artifacts",
   },
   {
@@ -1013,6 +1188,7 @@ export const BOOKS: Book[] = [
     author: "Unknown",
     coverUrl: "",
     yearRead: 2020,
+    genre: "religious",
   },
   {
     id: "pilgrim-hypothesis",
@@ -1020,6 +1196,7 @@ export const BOOKS: Book[] = [
     author: "Timothy Ballard",
     coverUrl: coverFromId(13290215),
     yearRead: 2020,
+    genre: "religious",
   },
   {
     id: "men-of-valor",
@@ -1027,6 +1204,7 @@ export const BOOKS: Book[] = [
     author: "Unknown",
     coverUrl: "",
     yearRead: 2020,
+    genre: "religious",
   },
   {
     id: "book-of-mormon-2020-a",
@@ -1034,6 +1212,7 @@ export const BOOKS: Book[] = [
     author: "Joseph Smith, Jr.",
     coverUrl: coverFromId(733401),
     yearRead: 2020,
+    genre: "scripture",
   },
   {
     id: "book-of-mormon-2020-b",
@@ -1041,6 +1220,7 @@ export const BOOKS: Book[] = [
     author: "Joseph Smith, Jr.",
     coverUrl: coverFromId(733401),
     yearRead: 2020,
+    genre: "scripture",
   },
   {
     id: "extreme-ownership",
@@ -1048,6 +1228,7 @@ export const BOOKS: Book[] = [
     author: "Jocko Willink & Leif Babin",
     coverUrl: coverFromId(12835042),
     yearRead: 2020,
+    genre: "business",
   },
   {
     id: "washington-hypothesis",
@@ -1055,6 +1236,7 @@ export const BOOKS: Book[] = [
     author: "Timothy Ballard",
     coverUrl: coverFromId(8893906),
     yearRead: 2020,
+    genre: "religious",
   },
   {
     id: "come-follow-me-2020",
@@ -1062,6 +1244,7 @@ export const BOOKS: Book[] = [
     author: "The Church of Jesus Christ of Latter-day Saints",
     coverUrl: "",
     yearRead: 2020,
+    genre: "scripture",
   },
   {
     id: "screwtape-letters",
@@ -1069,6 +1252,7 @@ export const BOOKS: Book[] = [
     author: "C. S. Lewis",
     coverUrl: coverFromId(9779),
     yearRead: 2022,
+    genre: "philosophy",
   },
   {
     id: "the-gambler",
@@ -1076,6 +1260,7 @@ export const BOOKS: Book[] = [
     author: "Fyodor Dostoevsky",
     coverUrl: coverFromId(3293339),
     yearRead: 2022,
+    genre: "classics",
   },
   {
     id: "dune-2022",
@@ -1083,6 +1268,7 @@ export const BOOKS: Book[] = [
     author: "Frank Herbert",
     coverUrl: coverFromId(11481354),
     yearRead: 2022,
+    genre: "fantasy",
   },
   {
     id: "pearl-of-great-price",
@@ -1090,6 +1276,7 @@ export const BOOKS: Book[] = [
     author: "Joseph Smith, Jr.",
     coverUrl: coverFromId(2007250),
     yearRead: 2022,
+    genre: "scripture",
   },
   {
     id: "origins-clan-mackenzie",
@@ -1097,6 +1284,7 @@ export const BOOKS: Book[] = [
     author: "Unknown",
     coverUrl: "",
     yearRead: 2022,
+    genre: "history",
   },
   {
     id: "origins-clan-macmillan",
@@ -1104,6 +1292,7 @@ export const BOOKS: Book[] = [
     author: "Unknown",
     coverUrl: "",
     yearRead: 2022,
+    genre: "history",
   },
   {
     id: "seven-habits-2022",
@@ -1111,6 +1300,7 @@ export const BOOKS: Book[] = [
     author: "Stephen R. Covey",
     coverUrl: coverFromId(10079937),
     yearRead: 2022,
+    genre: "business",
   },
   {
     id: "gc-oct-2021",
@@ -1118,6 +1308,7 @@ export const BOOKS: Book[] = [
     author: "The Church of Jesus Christ of Latter-day Saints",
     coverUrl: "",
     yearRead: 2022,
+    genre: "scripture",
   },
   {
     id: "fellowship-of-the-ring",
@@ -1125,6 +1316,7 @@ export const BOOKS: Book[] = [
     author: "J. R. R. Tolkien",
     coverUrl: coverFromId(14627060),
     yearRead: 2022,
+    genre: "fantasy",
   },
   {
     id: "turn-the-ship-around",
@@ -1132,6 +1324,7 @@ export const BOOKS: Book[] = [
     author: "L. David Marquet",
     coverUrl: coverFromId(8142531),
     yearRead: 2022,
+    genre: "business",
   },
   {
     id: "two-towers",
@@ -1139,6 +1332,7 @@ export const BOOKS: Book[] = [
     author: "J. R. R. Tolkien",
     coverUrl: coverFromId(14627564),
     yearRead: 2022,
+    genre: "fantasy",
   },
   {
     id: "this-2-shall-pass",
@@ -1146,6 +1340,7 @@ export const BOOKS: Book[] = [
     author: "Unknown",
     coverUrl: "",
     yearRead: 2022,
+    genre: "other",
   },
   {
     id: "mormons-and-masons",
@@ -1153,6 +1348,7 @@ export const BOOKS: Book[] = [
     author: "Matthew B. Brown",
     coverUrl: coverFromId(7293061),
     yearRead: 2022,
+    genre: "religious",
   },
   {
     id: "brigham-young-man-and-work",
@@ -1160,6 +1356,7 @@ export const BOOKS: Book[] = [
     author: "Preston Nibley",
     coverUrl: "",
     yearRead: 2022,
+    genre: "religious",
   },
   {
     id: "book-of-mormon-2022",
@@ -1167,6 +1364,7 @@ export const BOOKS: Book[] = [
     author: "Joseph Smith, Jr.",
     coverUrl: coverFromId(733401),
     yearRead: 2022,
+    genre: "scripture",
   },
   {
     id: "how-google-tests-software",
@@ -1174,6 +1372,7 @@ export const BOOKS: Book[] = [
     author: "James A. Whittaker et al.",
     coverUrl: coverFromId(12673895),
     yearRead: 2022,
+    genre: "technical",
   },
   {
     id: "learn-python-one-day",
@@ -1181,6 +1380,7 @@ export const BOOKS: Book[] = [
     author: "Jamie Chan",
     coverUrl: coverFromId(10229245),
     yearRead: 2022,
+    genre: "technical",
   },
   {
     id: "mere-christianity",
@@ -1188,6 +1388,7 @@ export const BOOKS: Book[] = [
     author: "C. S. Lewis",
     coverUrl: coverFromId(6538891),
     yearRead: 2022,
+    genre: "philosophy",
   },
   {
     id: "learn-csharp-2022",
@@ -1195,6 +1396,7 @@ export const BOOKS: Book[] = [
     author: "Jamie Chan",
     coverUrl: "",
     yearRead: 2022,
+    genre: "technical",
   },
   {
     id: "atomic-habits-2022",
@@ -1202,6 +1404,7 @@ export const BOOKS: Book[] = [
     author: "James Clear",
     coverUrl: coverFromId(12539702),
     yearRead: 2022,
+    genre: "self-help",
   },
   {
     id: "tidying-up",
@@ -1209,6 +1412,7 @@ export const BOOKS: Book[] = [
     author: "Marie Kondo",
     coverUrl: coverFromId(7367218),
     yearRead: 2022,
+    genre: "other",
   },
   {
     id: "100-favorite-verses-bom",
@@ -1216,6 +1420,7 @@ export const BOOKS: Book[] = [
     author: "Shauna Humphreys",
     coverUrl: "",
     yearRead: 2022,
+    genre: "scripture",
   },
   {
     id: "obliquity",
@@ -1223,6 +1428,7 @@ export const BOOKS: Book[] = [
     author: "John Kay",
     coverUrl: coverFromId(9083358),
     yearRead: 2022,
+    genre: "business",
   },
   {
     id: "manual-personal-2022",
@@ -1230,6 +1436,7 @@ export const BOOKS: Book[] = [
     author: "Unknown",
     coverUrl: "",
     yearRead: 2022,
+    genre: "technical",
   },
   {
     id: "tales-of-japan",
@@ -1237,6 +1444,7 @@ export const BOOKS: Book[] = [
     author: "Kotaro Chiba",
     coverUrl: "",
     yearRead: 2022,
+    genre: "other",
   },
   {
     id: "he-did-deliver-me",
@@ -1244,6 +1452,7 @@ export const BOOKS: Book[] = [
     author: "Colleen C. Harrison",
     coverUrl: coverFromId(14474235),
     yearRead: 2022,
+    genre: "religious",
   },
   {
     id: "zelda-four-swords-pt2",
@@ -1251,6 +1460,7 @@ export const BOOKS: Book[] = [
     author: "Akira Himekawa",
     coverUrl: "",
     yearRead: 2022,
+    genre: "gaming",
   },
   {
     id: "case-for-the-bom",
@@ -1258,6 +1468,7 @@ export const BOOKS: Book[] = [
     author: "Tad R. Callister",
     coverUrl: coverFromId(10841119),
     yearRead: 2022,
+    genre: "scripture",
   },
   {
     id: "naked-socialist",
@@ -1265,6 +1476,7 @@ export const BOOKS: Book[] = [
     author: "Paul B. Skousen",
     coverUrl: coverFromId(10323216),
     yearRead: 2022,
+    genre: "business",
   },
   {
     id: "come-follow-me-2022",
@@ -1272,5 +1484,27 @@ export const BOOKS: Book[] = [
     author: "The Church of Jesus Christ of Latter-day Saints",
     coverUrl: "",
     yearRead: 2022,
+    genre: "scripture",
   }
 ];
+
+export function getBookYears(): number[] {
+  return [
+    ...new Set(
+      BOOKS.map((b) => b.yearRead).filter((y): y is number => y != null),
+    ),
+  ].sort((a, b) => b - a);
+}
+
+export function getBookAuthors(): string[] {
+  return [...new Set(BOOKS.map((b) => b.author))].sort((a, b) =>
+    a.localeCompare(b, undefined, { sensitivity: "base" }),
+  );
+}
+
+export function getBookGenres(): BookGenre[] {
+  const present = new Set(BOOKS.map((b) => b.genre));
+  return (Object.keys(GENRE_LABEL) as BookGenre[]).filter((g) =>
+    present.has(g),
+  );
+}
