@@ -5,11 +5,13 @@ import {
   AiOutlineInfoCircle,
   AiOutlineProject,
   AiOutlineBook,
+  AiOutlineShopping,
   AiOutlineMail,
   AiFillHome,
   AiFillInfoCircle,
   AiFillProject,
   AiFillBook,
+  AiFillShopping,
   AiFillMail,
 } from "react-icons/ai";
 
@@ -36,6 +38,12 @@ const links = [
     label: "Reading",
     outline: AiOutlineBook,
     filled: AiFillBook,
+  },
+  {
+    path: "/shop",
+    label: "Shop",
+    outline: AiOutlineShopping,
+    filled: AiFillShopping,
   },
   {
     path: "/about",
