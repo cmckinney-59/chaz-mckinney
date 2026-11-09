@@ -1,3 +1,5 @@
+import completeGuideDeseretAlphabetCover from "../assets/images/books/complete-guide-deseret-alphabet.jpg";
+
 export type BookGenre =
   | "fantasy"
   | "fiction"
@@ -93,10 +95,10 @@ export const BOOKS: Book[] = [
   },
   {
     id: "learn-deseret",
-    title: "Learn Deseret",
-    author: "Unknown",
-    // No reliable Open Library cover found yet
-    coverUrl: "",
+    title:
+      "A Complete Guide to Reading and Writing the Deseret Alphabet",
+    author: "Neil Alexander Walker",
+    coverUrl: completeGuideDeseretAlphabetCover,
     yearRead: 2026,
     genre: "religious",
   },
