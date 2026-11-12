@@ -1,13 +1,32 @@
+import { useState } from "react";
+import { useSearchParams } from "react-router-dom";
 import PageTitle from "../../components/PageTitle/PageTitle";
 import {
-  SHOP_CHECKOUT_URL,
   SHOP_PRODUCTS,
+  shopHasLiveCheckout,
   shopInterestMailto,
+  startCheckout,
 } from "../../data/shop";
 import "./ShopPage.css";
 
 export default function ShopPage() {
-  const checkoutReady = Boolean(SHOP_CHECKOUT_URL);
+  const checkoutReady = shopHasLiveCheckout();
+  const [searchParams] = useSearchParams();
+  const checkoutStatus = searchParams.get("checkout");
+  const [loadingId, setLoadingId] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
+
+  async function handlePreorder(productId: string) {
+    setError(null);
+    setLoadingId(productId);
+    try {
+      const url = await startCheckout(productId);
+      window.location.assign(url);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Checkout failed.");
+      setLoadingId(null);
+    }
+  }
 
   return (
     <article className="shop-page">
@@ -20,28 +39,22 @@ export default function ShopPage() {
         </p>
       </header>
 
-      <section className="shop-banner" aria-label="Pre-order status">
-        <p className="shop-banner-eyebrow">Pre-orders</p>
-        <p className="shop-banner-text">
-          {checkoutReady
-            ? "Checkout is live. Reserve a print below and I'll confirm details by email."
-            : "Checkout link coming soon. Email me to get on the waitlist and I'll notify you when pre-orders open."}
+      {checkoutStatus === "success" && (
+        <p className="shop-banner-text" role="status">
+          Thanks — your pre-order checkout completed. You&apos;ll get a
+          confirmation email from Stripe shortly.
         </p>
-        {checkoutReady ? (
-          <a
-            className="shop-cta"
-            href={SHOP_CHECKOUT_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Open checkout
-          </a>
-        ) : (
-          <a className="shop-cta" href={shopInterestMailto()}>
-            Join the waitlist
-          </a>
-        )}
-      </section>
+      )}
+      {checkoutStatus === "cancel" && (
+        <p className="shop-banner-text" role="status">
+          Checkout was cancelled. You can try again whenever you&apos;re ready.
+        </p>
+      )}
+      {error && (
+        <p className="shop-banner-text" role="alert">
+          {error}
+        </p>
+      )}
 
       <ul className="shop-grid">
         {SHOP_PRODUCTS.map((product) => (
@@ -58,14 +71,14 @@ export default function ShopPage() {
               <p className="shop-card-script">{product.script}</p>
               <p className="shop-card-description">{product.description}</p>
               {checkoutReady ? (
-                <a
+                <button
+                  type="button"
                   className="shop-card-action"
-                  href={SHOP_CHECKOUT_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  disabled={loadingId === product.id}
+                  onClick={() => handlePreorder(product.id)}
                 >
-                  Pre-order
-                </a>
+                  {loadingId === product.id ? "Redirecting…" : "Pre-order"}
+                </button>
               ) : (
                 <a
                   className="shop-card-action"
