@@ -84,7 +84,7 @@ export default function ShopPage() {
                   className="shop-card-action"
                   href={shopInterestMailto(product.name)}
                 >
-                  Request this print
+                  Pre-order
                 </a>
               )}
             </div>
